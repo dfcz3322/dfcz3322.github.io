@@ -14,7 +14,24 @@
       <div>
       <i class="fa fa-search input-icon"></i>
       <input class="navbarsearch" type="search" placeholder="Type something to start search">
+    </div>
+    <div class="dropdown">
+      <p class="categories dropbtn">Categories </p>
+      <div class="dropdown-content">
+        <div class="flex-row flex-wrap dropdown-content__inner">
+          <p class="category">Sport</p>
+          <p class="category">World</p>
+          <p class="category">Covid</p>
+          <p class="category">Business</p>
+          <p class="category">Politics</p>
+          <p class="category">Science</p>
+          <p class="category">Religion</p>
+          <p class="category">Health</p>
+        </div>
       </div>
+    </div>
+      <p><i class="fa fa-bolt yellow-icon"></i>Trending news</p>
+    
       <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
         <svg width="30" height="30" viewBox="0 0 100 100">
           <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -24,22 +41,34 @@
       </button>
     </div>
   </nav>
-  <div class="baner">
-
+</header>
+<div class="container">
+  <div class="banner flex-row">
+    <div class="banner__text">
+      <div>
+    <h1 class="banner__title">long established</h1>
+    <p class="banner__description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
+      </div>
+    <div class="flex-row banner-between">
+      <p class="date">May 20th 2020</p>
+      <p class="read-more">Read more</p>
+    </div>
   </div>
-  <div class="box-container">
+  <div class="banner-img">
+    <img src="./image 1.png">
+  </div>
+  </div>
+  <div class="flex-row flex-wrap box-container">
     <div class="box">
-      <p>
         <div class="prompt-img">
           <img src="./image 1.png">
         </div>
-        <h><strong>long established</strong></h>
-        <p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
-        <div class="flex-row between">
-          <p>May 20th 2020</p>
-          <p>Read more</p>
+        <h1 class="box__title">long established</h1>
+        <p class="box__description"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
+        <div class="flex-row box-between">
+          <p class="date">May 20th 2020</p>
+          <p class="read-more">Read more</p>
         </div>
-      </p>
     </div>
     <div class="box">
       <p>Blah blah blah</p>
@@ -63,7 +92,7 @@
       <p>Blah blah blah</p>
     </div>
   </div>
-</header>
+</div>
 <footer class="foot">
 <p><strong>News App </strong>2012 copyright all rights reserved</p>
 </footer>
