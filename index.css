@@ -95,7 +95,8 @@ h1 {
 
 .navbarlogo {
   height: 24px;
-  width: 90px;
+  width: 120px;
+  font-weight: 700;
   line-height: 24px;
   border-radius: 4px;
   margin-right: 70px;
