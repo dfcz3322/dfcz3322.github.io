@@ -33,7 +33,7 @@ function renderArticleTiles(articlesData) {
     const firstArticle = articlesData.shift();
 
     const bannerMarkup = `
-            <div class="banner__text" onclick="localStorage.setItem('lastImg', '${firstArticle.fields.thumbnail}');localStorage.setItem('lastTitle', '${firstArticle.fields.headline}');window.location.href = window.location.href.replace('main', 'article')">
+            <div class="banner__text" onclick="localStorage.setItem('lastImg', '${firstArticle.fields.thumbnail}');localStorage.setItem('lastTitle', '${firstArticle.fields.headline}');window.location.href = window.location.href.replace('index', 'article')">
                 <div>
                     <h1 class="banner__title" data-title="search-title" data-img-src="${firstArticle.fields.thumbnail}">${firstArticle.fields.headline}</h1>
                     <p class="banner__description">${firstArticle.fields.trailText}</p>
@@ -51,7 +51,7 @@ function renderArticleTiles(articlesData) {
 
     articlesData.forEach((article) => {
         const articleMarkup =
-            `<div class="box" onclick="localStorage.setItem('lastImg', '${article.fields.thumbnail}');localStorage.setItem('lastTitle', '${article.fields.headline}');window.location.href = window.location.href.replace('main', 'article')">
+            `<div class="box" onclick="localStorage.setItem('lastImg', '${article.fields.thumbnail}');localStorage.setItem('lastTitle', '${article.fields.headline}');window.location.href = window.location.href.replace('index', 'article')">
                 <div class="prompt-img">
                     <img src="${article.fields.thumbnail}">
                 </div>
@@ -82,42 +82,15 @@ categoriesList.addEventListener("click", (event) => {
     getArticles(event.target.dataset.category);
 });
 
-function addMainPageListeners() {
-    scrollToTop.addEventListener("click", () => {
-        window.scroll({
-            top: 0,
-            behavior: 'smooth'
-        })
-    });
-
-    window.onscroll = () => {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollToTop.style.display = "block";
-        } else {
-            scrollToTop.style.display = "none";
-        }
-    };
-
-    searchButton.addEventListener('click', (event) => {
-        onSearch();
-     });
-     
-     document.addEventListener('keypress', (event) => {
-         if (event.key === 'Enter' && input === document.activeElement) {
-             onSearch();
-         }
-     });
-
-     input.addEventListener("input", (event => {
-        if (!event.target.value) {
-            searchDropdown.style.display = "none";
-        }
-    }));
-}
 
 window.onload = () => {
-    if (window.location.href.includes("main")) {
-        addMainPageListeners();
+    if (window.location.href.includes("index")) {
+        scrollToTop.addEventListener("click", () => {
+            window.scroll({
+                top: 0,
+                behavior: 'smooth'
+            })
+        });
         getArticles("trending");
     } 
     if (window.location.href.includes("article")) {
@@ -141,7 +114,7 @@ function onSearch() {
     if (filteredTitles.length && input.value.length >= 2) {
         filteredTitles.forEach((item) => {
             const titleMarkup = 
-            `<div class="search-item" onclick="localStorage.setItem('lastImg', '${item.imgSrc}');localStorage.setItem('lastTitle', '${item.title}');window.location.href = window.location.href.replace('main', 'article')">
+            `<div class="search-item" onclick="localStorage.setItem('lastImg', '${item.imgSrc}');localStorage.setItem('lastTitle', '${item.title}');window.location.href = window.location.href.replace('index', 'article')">
                 <p>${item.title}</p>
             </div>`
             searchDropdown.innerHTML += titleMarkup;
@@ -152,3 +125,27 @@ function onSearch() {
         searchDropdown.style.display = "none";
     }
 }
+
+window.onscroll = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTop.style.display = "block";
+    } else {
+        scrollToTop.style.display = "none";
+    }
+};
+
+searchButton.addEventListener('click', () => {
+    onSearch();
+ });
+ 
+ document.addEventListener('keypress', (event) => {
+     if (event.key === 'Enter' && input === document.activeElement) {
+         onSearch();
+     }
+ });
+
+ input.addEventListener("input", (event => {
+    if (!event.target.value) {
+        searchDropdown.style.display = "none";
+    }
+}));
